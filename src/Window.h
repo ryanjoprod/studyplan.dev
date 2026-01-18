@@ -8,6 +8,23 @@ public:
 			"Hello window",
 			800, 300, 0
 		);
+
+		// Get the window's surface pixel format details
+		const auto* fmt = SDL_GetPixelFormatDetails(
+			getSurface()->format
+		);
+
+		SDL_FillSurfaceRect(
+			getSurface(),
+			nullptr,
+			SDL_MapRGB(fmt, nullptr, 50, 50, 50)
+		);
+
+		SDL_UpdateWindowSurface(window);
+	}
+
+	SDL_Surface* getSurface() const {
+		return SDL_GetWindowSurface(window);
 	}
 
 	Window(const Window&) = delete;

@@ -32,7 +32,11 @@ int main(int, char**) {
 				isRunning = false;
 			}
 		}
+
+		window.render();
+		window.update();
 	}
+
 
 	SDL_Quit();
 

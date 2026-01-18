@@ -4,24 +4,25 @@
 #include <SDL3_ttf/SDL_ttf.h>
 
 int main(int, char**) {
-    SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_VIDEO);
 
-    SDL_Window* Window{ SDL_CreateWindow(
-      "Hello Window", 800, 300, 0
-    ) };
+	SDL_Window* window{ SDL_CreateWindow(
+		"Hello window!", 800, 300, 0
+	) };
 
-    bool IsRunning = true;
-    SDL_Event Event;
-    while (IsRunning) {
-        while (SDL_PollEvent(&Event)) {
-            if (Event.type == SDL_EVENT_QUIT) {
-                IsRunning = false;
-            }
-        }
-    }
+	bool isRunning = true;
+	SDL_Event e;
 
-    SDL_DestroyWindow(Window);
-    SDL_Quit();
+	while (isRunning) {
+		while (SDL_PollEvent(&e)) {
+			if (e.type == SDL_EVENT_QUIT) {
+				isRunning = false;
+			}
+		}
+	}
 
-    return 0;
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+
+	return 0;
 }

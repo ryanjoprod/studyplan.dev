@@ -7,7 +7,9 @@
 
 void handleEvent(SDL_Event& e) {
 	if (e.type == SDL_EVENT_MOUSE_MOTION) {
-		std::cout << "Mouse moved.\n";
+		std::cout << "Mouse motion detected - "
+			<< "x: " << e.motion.x
+			<< " y: " << e.motion.y << '\n';
 	}
 	else if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
 		std::cout << "Mouse clicked.\n";

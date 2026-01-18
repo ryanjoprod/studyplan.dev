@@ -6,9 +6,14 @@ public:
 	Window() {
 		window = SDL_CreateWindow(
 			"Hello window",
-			800, 300, 0
+			getWidth(),
+			getHeight(),
+			0
 		);
 	}
+
+	int getWidth() const { return 700; }
+	int getHeight() const { return 300; }
 
 	SDL_Surface* getSurface() const {
 		return SDL_GetWindowSurface(window);

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Rectangle.h"
+#include "Button.h"
 
 class UI {
 public:
@@ -21,8 +22,13 @@ public:
 		c.handleEvent(e);
 	}
 
+	void setRectangleColor(const SDL_Color& color) {
+		a.setColor(color);
+		b.setColor(color);
+	}
+
 private:
 	Rectangle a{ SDL_Rect{50, 50, 50, 50} };
 	Rectangle b{ SDL_Rect{150, 50, 50, 50} };
-	Rectangle c{ SDL_Rect{250, 50, 50, 50} };
+	Button c{ *this, SDL_Rect{250, 50, 50, 50} };
 };

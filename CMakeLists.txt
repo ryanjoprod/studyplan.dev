@@ -25,8 +25,8 @@ set(
 )
 
 add_executable(MyGame
-	src/main.cpp
- "src/Window.h" "src/Rectangle.h" "src/UI.h" )
+	"src/main.cpp"
+	"src/Button.cpp")
 
 if(APPLE)
 	set_target_properties(MyGame PROPERTIES

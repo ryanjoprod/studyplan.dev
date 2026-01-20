@@ -4,38 +4,26 @@
 #include <iostream>
 
 #include "Window.h"
-
-void handleEvent(SDL_Event& e) {
-	if (e.type == SDL_EVENT_MOUSE_MOTION) {
-		std::cout << "Mouse motion detected - "
-			<< "x: " << e.motion.x
-			<< " y: " << e.motion.y << '\n';
-	}
-	else if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
-		std::cout << "Mouse clicked.\n";
-	}
-	else if (e.type == SDL_EVENT_KEY_DOWN) {
-		std::cout << "Keyboard button pressed.\n";
-	}
-}
+#include "Rectangle.h"
 
 int main(int, char**) {
 	SDL_Init(SDL_INIT_VIDEO);
 	Window window;
+	Rectangle rect{ SDL_Rect{50, 50, 50, 50} };
 
 	SDL_Event e;
 	bool isRunning{ true };
 
 	while (isRunning) {
 		while (SDL_PollEvent(&e)) {
-			handleEvent(e);
-
+			rect.handleEvent(e);
 			if (e.type == SDL_EVENT_QUIT) {
 				isRunning = false;
 			}
 		}
 
 		window.render();
+		rect.render(window.getSurface());
 		window.update();
 	}
 

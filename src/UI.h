@@ -4,31 +4,23 @@
 #include <vector>
 #include <memory>
 
-#include "Rectangle.h"
+#include "SettingsMenu.h"
 #include "Button.h"
 
 class UI {
 public:
 	
 	void render(SDL_Surface* surface) const {
-		a.render(surface);
-		b.render(surface);
-		c.render(surface);
+		settingsButton.render(surface);
+		settings.render(surface);
 	}
 
 	void handleEvent(SDL_Event& e) {
-		a.handleEvent(e);
-		b.handleEvent(e);
-		c.handleEvent(e);
-	}
-
-	void setRectangleColor(const SDL_Color& color) {
-		a.setColor(color);
-		b.setColor(color);
+		settingsButton.handleEvent(e);
+		settings.handleEvent(e);
 	}
 
 private:
-	Rectangle a{ SDL_Rect{50, 50, 50, 50} };
-	Rectangle b{ SDL_Rect{150, 50, 50, 50} };
-	Button c{ *this, SDL_Rect{250, 50, 50, 50} };
+	Button settingsButton{ {50, 50, 50, 50} };
+	SettingsMenu settings;
 };

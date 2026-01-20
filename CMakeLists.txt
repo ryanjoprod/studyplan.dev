@@ -26,7 +26,7 @@ set(
 
 add_executable(MyGame
 	"src/main.cpp"
-	"src/Button.cpp")
+	 "src/UserEvents.h" "src/SettingsMenu.h")
 
 if(APPLE)
 	set_target_properties(MyGame PROPERTIES

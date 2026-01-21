@@ -26,7 +26,7 @@ set(
 
 add_executable(MyGame
 	"src/main.cpp"
-	 "src/UserEvents.h" "src/SettingsMenu.h")
+)
 
 if(APPLE)
 	set_target_properties(MyGame PROPERTIES
@@ -46,6 +46,7 @@ set(SDLTTF_VENDORED ON)
 
 # Set a variable for our vendor directory
 set(VENDOR_DIR "${PROJECT_SOURCE_DIR}/vendor")
+# set(ASSET_DIR "${PROJECT_SOURCE_DIR}/assets")
 
 # Add the SDL libraries from our submodules
 add_subdirectory(${VENDOR_DIR}/SDL)
@@ -56,4 +57,8 @@ target_link_libraries(MyGame
 	SDL3::SDL3
 	SDL3_image::SDL3_image
 	SDL3_ttf::SDL3_ttf
+)
+
+file(COPY ${CMAKE_SOURCE_DIR}/assets
+	DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug/
 )

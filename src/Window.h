@@ -6,7 +6,7 @@ public:
 	Window() {
 		window = SDL_CreateWindow(
 			"Hello window",
-			700, 300, 0
+			600, 300, 0
 		);
 	}
 

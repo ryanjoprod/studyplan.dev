@@ -1,3 +1,8 @@
 .vs/*
 out/*
 build/*
+/src/UserEvents.h
+/src/SettingsMenu.h
+/src/Rectangle.h
+/src/UI.h
+/src/Button.h

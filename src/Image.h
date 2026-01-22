@@ -15,7 +15,15 @@ public:
 		}
 	}
 
-	void render(SDL_Surface* surface) {}
+	void render(SDL_Surface* surface) {
+		if (!SDL_BlitSurface(imageSurface, nullptr, surface, nullptr)) {
+			std::cout << "Failed to render image with error: " << SDL_GetError() << '\n';
+		}
+		else {
+			SDL_Surface* in = SDL_ConvertSurface(imageSurface, surface->format);
+			SDL_BlitSurface(in, nullptr, surface, nullptr);
+		}
+	}
 
 	~Image() {
 		if (imageSurface) {

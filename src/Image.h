@@ -13,16 +13,18 @@ public:
 			std::cout << "Failed to load image "
 				<< file << ":\n " << SDL_GetError() << '\n';
 		}
+		else {
+			sourceRect = { 0, 0, imageSurface->w, imageSurface->h };  // full size
+			// sourceRect = { 0, 0, 300, 150 };  // cropping #1
+			// sourceRect = { 100, 100, 300, 150 };  //  cropping #2
+		}
 	}
 
 	void render(SDL_Surface* surface) {
-		if (!SDL_BlitSurface(imageSurface, nullptr, surface, nullptr)) {
-			std::cout << "Failed to render image with error: " << SDL_GetError() << '\n';
-		}
-		else {
-			SDL_Surface* in = SDL_ConvertSurface(imageSurface, surface->format);
-			SDL_BlitSurface(in, nullptr, surface, nullptr);
-		}
+		if (!imageSurface) return;
+
+		SDL_Surface* in = SDL_ConvertSurface(imageSurface, surface->format);
+		SDL_BlitSurfaceScaled(in, &sourceRect, surface, &destRect, SDL_SCALEMODE_LINEAR);
 	}
 
 	~Image() {
@@ -36,4 +38,7 @@ public:
 
 private:
 	SDL_Surface* imageSurface{ nullptr };
+	SDL_Rect sourceRect{};
+	SDL_Rect destRect{ 0, 0, 600, 300 };  // full window
+	// SDL_Rect destRect{ 0, 0, 300, 150 };  // scaled window (cropping)
 };
